@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityModel.OidcClient", 
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "..\IdentityModel.OidcClient\src\Shared\Shared.shproj", "{A1C5566B-C8FD-412F-AB75-050461F4962C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{6CD32F9F-4136-4743-90F7-83E44DFCBB11}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\IdentityModel.OidcClient\src\Shared\Shared.projitems*{a1c5566b-c8fd-412f-ab75-050461f4962c}*SharedItemsImports = 13
