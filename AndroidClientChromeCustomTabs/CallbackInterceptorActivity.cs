@@ -3,14 +3,14 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 
-namespace AndroidClientChromeCustomTabs
+namespace Okta.Samples.OAuth.Xamarin
 {
     [Activity(Label = "CallbackInterceptorActivity")]
     [IntentFilter(
         new[] { Intent.ActionView },
         Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
-        DataScheme = "io.identitymodel.native",
-        DataHost = "callback")]
+        DataScheme = ClientParameters.DataScheme,
+        DataHost = ClientParameters.DataHost)]
     public class CallbackInterceptorActivity :  Activity
     {       
         protected override void OnCreate(Bundle savedInstanceState)
@@ -20,7 +20,7 @@ namespace AndroidClientChromeCustomTabs
             Finish();
 
             // get URI, send with mediator
-            AndroidClientChromeCustomTabsApplication.Mediator.Send(Intent.DataString);
+            OktaAndroidApplication.Mediator.Send(Intent.DataString);
         }
     }
 }

@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("AndroidClientChromeCustomTabs.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Okta.Samples.OAuth.Xamarin.Resource", IsApplication=true)]
 
-namespace AndroidClientChromeCustomTabs
+namespace Okta.Samples.OAuth.Xamarin
 {
 	
 	
@@ -26,8 +26,33 @@ namespace AndroidClientChromeCustomTabs
 		
 		public static void UpdateIdValues()
 		{
-			global::PCLCrypto.Resource.String.ApplicationName = global::AndroidClientChromeCustomTabs.Resource.String.ApplicationName;
-			global::PCLCrypto.Resource.String.Hello = global::AndroidClientChromeCustomTabs.Resource.String.Hello;
+			global::PCLCrypto.Resource.String.ApplicationName = global::Okta.Samples.OAuth.Xamarin.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::Okta.Samples.OAuth.Xamarin.Resource.String.Hello;
+		}
+		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int slide_in_left = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int slide_in_right = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int slide_out_left = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int slide_out_right = 2130968579;
+			
+			static Animation()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Animation()
+			{
+			}
 		}
 		
 		public partial class Attribute
@@ -62,14 +87,14 @@ namespace AndroidClientChromeCustomTabs
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
+			// aapt resource value: 0x7f060001
+			public const int btnCallApi = 2131099649;
 			
-			// aapt resource value: 0x7f050001
-			public const int button1 = 2131034113;
+			// aapt resource value: 0x7f060000
+			public const int btnLogin = 2131099648;
 			
-			// aapt resource value: 0x7f050002
-			public const int editText1 = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int txtResult = 2131099650;
 			
 			static Id()
 			{
@@ -100,11 +125,11 @@ namespace AndroidClientChromeCustomTabs
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{

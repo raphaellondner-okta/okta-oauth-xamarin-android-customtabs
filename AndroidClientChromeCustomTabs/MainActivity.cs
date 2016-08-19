@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 
-namespace AndroidClientChromeCustomTabs
+namespace Okta.Samples.OAuth.Xamarin
 {
     /// <summary>
     /// Important note: the Chrome custom tab intent closes when you navigate away from it.  So, when 
@@ -17,17 +17,12 @@ namespace AndroidClientChromeCustomTabs
     /// Alternatively, you can navigate to another activity (or to MainActivity with standard launchmode), as long as you
     /// make sure to keep the results of the login stored somewhere you can access it.  
     /// </summary>
-    [Activity(Label = "AndroidClientChromeCustomTabs", MainLauncher = true, Icon = "@drawable/icon", 
+    [Activity(Label = "Okta.Samples.OAuth.Xamarin", MainLauncher = true, Icon = "@drawable/icon", 
         LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
     public class MainActivity : Activity
     {
         private OidcClient _oidcClient;
         private HttpClient _apiClient;
-
-        private string OAuthClientId = "79arVRKBcBEYMuMOXrYF";
-        private string OAuthRedirectUrl = "com.oktapreview.example:/oauth";
-        private string oktaTenantUrl = "https://example.oktapreview.com";
-
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -38,28 +33,29 @@ namespace AndroidClientChromeCustomTabs
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
-            button.Click += Button_Click;            
-            Button btnCallApi = FindViewById<Button>(Resource.Id.button1);
+            Button button = FindViewById<Button>(Resource.Id.btnLogin);
+            button.Click += BtnSignIn_Click;            
+            Button btnCallApi = FindViewById<Button>(Resource.Id.btnCallApi);
             btnCallApi.Click += BtnCallApi_Click;
         }
           
-        private async void Button_Click(object sender, EventArgs e)
+        private async void BtnSignIn_Click(object sender, EventArgs e)
         {
-            var authority = oktaTenantUrl;
-
             var options = new OidcClientOptions(
-                authority,
-                OAuthClientId,
-                "secret",
-                "openid email profile groups offline_access",
-                OAuthRedirectUrl, 
+                ClientParameters.OAuthAuthority,
+                ClientParameters.OAuthClientId,
+                ClientParameters.OAuthClientSecret,
+                ClientParameters.OAuthScopes,
+                ClientParameters.OAuthRedirectUrl, 
                 new ChromeCustomTabsWebView(this));
+
+            options.Style = ClientParameters.AuthStyle;
+            //options.UseFormPost = true;
 
             _oidcClient = new OidcClient(options);
             var result = await _oidcClient.LoginAsync();
 
-            var txtResult = FindViewById<EditText>(Resource.Id.editText1);
+            var txtResult = FindViewById<EditText>(Resource.Id.txtResult);
 
             if (!string.IsNullOrEmpty(result.Error))
             {             
@@ -79,7 +75,7 @@ namespace AndroidClientChromeCustomTabs
             txtResult.Text = sb.ToString();
 
             _apiClient = new HttpClient(result.Handler);
-            _apiClient.BaseAddress = new Uri("https://demo.identityserver.io/api/");
+            _apiClient.BaseAddress = new Uri(ClientParameters.ResourceServerApi);
         }
 
         private async void BtnCallApi_Click(object sender, EventArgs e)
@@ -89,7 +85,7 @@ namespace AndroidClientChromeCustomTabs
                 return;
             }
 
-            var txtResult = FindViewById<EditText>(Resource.Id.editText1);
+            var txtResult = FindViewById<EditText>(Resource.Id.txtResult);
 
             var result = await _apiClient.GetAsync("test");
             if (result.IsSuccessStatusCode)

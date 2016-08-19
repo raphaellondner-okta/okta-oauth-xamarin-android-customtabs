@@ -6,7 +6,7 @@ using IdentityModel.OidcClient.WebView;
 using System;
 using System.Threading.Tasks;
 
-namespace AndroidClientChromeCustomTabs
+namespace Okta.Samples.OAuth.Xamarin
 {
 
     class ChromeCustomTabsWebView : IWebView
@@ -44,8 +44,11 @@ namespace AndroidClientChromeCustomTabs
             var builder = new CustomTabsIntent.Builder(_customTabs.Session)
                .SetToolbarColor(Color.Argb(255, 52, 152, 219))
                .SetShowTitle(true)
-               .EnableUrlBarHiding();
-            
+               .EnableUrlBarHiding()
+               . SetStartAnimations(_context, Resource.Animation.slide_in_right, Resource.Animation.slide_out_left)
+                .SetExitAnimations(_context, Resource.Animation.slide_in_left, Resource.Animation.slide_out_right)
+                ;
+
             var customTabsIntent = builder.Build();
 
             // ensures the intent is not kept in the history stack, which makes
@@ -56,8 +59,7 @@ namespace AndroidClientChromeCustomTabs
             callback = (response) =>
             {
                 // remove handler
-                AndroidClientChromeCustomTabsApplication
-                .Mediator.ActivityMessageReceived -= callback;
+                OktaAndroidApplication.Mediator.ActivityMessageReceived -= callback;
 
                 // set result
                 _tcs.SetResult(new InvokeResult
@@ -71,8 +73,8 @@ namespace AndroidClientChromeCustomTabs
             };
 
             // attach handler
-            AndroidClientChromeCustomTabsApplication.Mediator.ActivityMessageReceived
-                += callback;     
+            OktaAndroidApplication.Mediator.ActivityMessageReceived
+                += callback;
 
             // launch
             customTabsIntent.LaunchUrl(_context, Android.Net.Uri.Parse(options.StartUrl));
@@ -80,6 +82,6 @@ namespace AndroidClientChromeCustomTabs
             // need an intent to be triggered when browsing to the "io.identitymodel.native://callback"
             // scheme/URI => CallbackInterceptorActivity
             return _tcs.Task;
-        } 
+        }
     }
 }

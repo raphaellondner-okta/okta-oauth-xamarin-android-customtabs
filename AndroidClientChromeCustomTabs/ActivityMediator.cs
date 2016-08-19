@@ -1,4 +1,4 @@
-namespace AndroidClientChromeCustomTabs
+namespace Okta.Samples.OAuth.Xamarin
 {
     public class ActivityMediator
     {
