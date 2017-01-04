@@ -5,23 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okta.Samples.OAuth.Xamarin.Android", "AndroidClientChromeCustomTabs\Okta.Samples.OAuth.Xamarin.Android.csproj", "{E5D5D715-E5B0-4D3A-8606-1ADB8FDD217F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityModel.OidcClient.Net", "..\IdentityModel.OidcClient\src\IdentityModel.OidcClient.Net\IdentityModel.OidcClient.Net.csproj", "{C3FF5628-3E85-4957-BA55-DAD8E999D51C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityModel.OidcClient", "..\IdentityModel.OidcClient\src\IdentityModel.OidcClient\IdentityModel.OidcClient.csproj", "{D85E9818-2943-41C2-AE22-5DB0DE061997}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "..\IdentityModel.OidcClient\src\Shared\Shared.shproj", "{A1C5566B-C8FD-412F-AB75-050461F4962C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{6CD32F9F-4136-4743-90F7-83E44DFCBB11}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\IdentityModel.OidcClient\src\Shared\Shared.projitems*{a1c5566b-c8fd-412f-ab75-050461f4962c}*SharedItemsImports = 13
-		..\IdentityModel.OidcClient\src\Shared\Shared.projitems*{c3ff5628-3e85-4957-ba55-dad8e999d51c}*SharedItemsImports = 4
-		..\IdentityModel.OidcClient\src\Shared\Shared.projitems*{d85e9818-2943-41c2-ae22-5db0de061997}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -33,14 +22,6 @@ Global
 		{E5D5D715-E5B0-4D3A-8606-1ADB8FDD217F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5D5D715-E5B0-4D3A-8606-1ADB8FDD217F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E5D5D715-E5B0-4D3A-8606-1ADB8FDD217F}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{C3FF5628-3E85-4957-BA55-DAD8E999D51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3FF5628-3E85-4957-BA55-DAD8E999D51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3FF5628-3E85-4957-BA55-DAD8E999D51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3FF5628-3E85-4957-BA55-DAD8E999D51C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D85E9818-2943-41C2-AE22-5DB0DE061997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D85E9818-2943-41C2-AE22-5DB0DE061997}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D85E9818-2943-41C2-AE22-5DB0DE061997}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D85E9818-2943-41C2-AE22-5DB0DE061997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

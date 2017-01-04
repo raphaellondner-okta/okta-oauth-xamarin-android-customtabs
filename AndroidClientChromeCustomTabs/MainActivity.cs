@@ -17,7 +17,7 @@ namespace Okta.Samples.OAuth.Xamarin
     /// Alternatively, you can navigate to another activity (or to MainActivity with standard launchmode), as long as you
     /// make sure to keep the results of the login stored somewhere you can access it.  
     /// </summary>
-    [Activity(Label = "Okta.Samples.OAuth.Xamarin", MainLauncher = true, Icon = "@drawable/icon", 
+    [Activity(Label = "Okta.Samples.OAuth.Xamarin", MainLauncher = true, Icon = "@drawable/icon",
         LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
     public class MainActivity : Activity
     {
@@ -27,18 +27,18 @@ namespace Okta.Samples.OAuth.Xamarin
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            
-             // Set our view from the "main" layout resource
+
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             // Get our button from the layout resource,
             // and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.btnLogin);
-            button.Click += BtnSignIn_Click;            
+            button.Click += BtnSignIn_Click;
             Button btnCallApi = FindViewById<Button>(Resource.Id.btnCallApi);
             btnCallApi.Click += BtnCallApi_Click;
         }
-          
+
         private async void BtnSignIn_Click(object sender, EventArgs e)
         {
             var options = new OidcClientOptions(
@@ -46,7 +46,7 @@ namespace Okta.Samples.OAuth.Xamarin
                 ClientParameters.OAuthClientId,
                 ClientParameters.OAuthClientSecret,
                 ClientParameters.OAuthScopes,
-                ClientParameters.OAuthRedirectUrl, 
+                ClientParameters.OAuthRedirectUrl,
                 new ChromeCustomTabsWebView(this));
 
             options.Style = ClientParameters.AuthStyle;
@@ -58,7 +58,7 @@ namespace Okta.Samples.OAuth.Xamarin
             var txtResult = FindViewById<EditText>(Resource.Id.txtResult);
 
             if (!string.IsNullOrEmpty(result.Error))
-            {             
+            {
                 txtResult.Text = result.Error;
                 return;
             }
@@ -68,14 +68,17 @@ namespace Okta.Samples.OAuth.Xamarin
             {
                 sb.Append(string.Format("{0}: {1}\n", claim.Type, claim.Value));
             }
-
-            sb.Append(string.Format("\n{0}: {1}\n", "refresh token", result.RefreshToken));
+            if (!string.IsNullOrEmpty(result.RefreshToken))
+                sb.Append(string.Format("\n{0}: {1}\n", "refresh token", result.RefreshToken));
             sb.Append(string.Format("\n{0}: {1}\n", "access token", result.AccessToken));
 
             txtResult.Text = sb.ToString();
 
-            _apiClient = new HttpClient(result.Handler);
-            _apiClient.BaseAddress = new Uri(ClientParameters.ResourceServerApi);
+            if (result.Handler != null)
+            {
+                _apiClient = new HttpClient(result.Handler);
+                _apiClient.BaseAddress = new Uri(ClientParameters.ResourceServerApi);
+            }
         }
 
         private async void BtnCallApi_Click(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace Okta.Samples.OAuth.Xamarin
             {
                 txtResult.Text = result.ReasonPhrase;
             }
-        }         
+        }
     }
 }
 

@@ -50,6 +50,13 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IdentityModel">
+      <HintPath>..\packages\IdentityModel.1.13.0\lib\portable-net45+wp80+win8+wpa81\IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="IdentityModel.OidcClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityModel.OidcClient.1.7.0\lib\portable-net45+wp80+win8+wpa81\IdentityModel.OidcClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="jose-pcl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jose-pcl.0.0.4\lib\portable-net45+netcore45+wpa81+wp8\jose-pcl.dll</HintPath>
       <Private>True</Private>
@@ -136,16 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\IdentityModel.OidcClient\src\IdentityModel.OidcClient.Net\IdentityModel.OidcClient.Net.csproj">
-      <Project>{c3ff5628-3e85-4957-ba55-dad8e999d51c}</Project>
-      <Name>IdentityModel.OidcClient.Net</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IdentityModel.OidcClient\src\IdentityModel.OidcClient\IdentityModel.OidcClient.csproj">
-      <Project>{d85e9818-2943-41c2-ae22-5db0de061997}</Project>
-      <Name>IdentityModel.OidcClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\anim\slide_in_left.xml" />
